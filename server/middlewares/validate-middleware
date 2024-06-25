@@ -1,0 +1,23 @@
+
+const validate = (schema)=> async (req,res,next)=>{
+try {
+    const parasbody = await schema.parseAsync(req.body)
+    //paresAsync is match the our schema yes or no when user are fill  
+    req.body = parasbody  
+    next();
+} catch (err) {
+    console.log(err)
+    const status = 422
+    const message= "fill the all input fileds"
+    const extradetails= err.errors[0].message;
+    const errors ={
+       status,
+       message,
+       extradetails
+    }
+    console.log(errors)
+    //  res.status(400).json({errors})
+    next(errors)
+}   
+}
+module.exports = validate

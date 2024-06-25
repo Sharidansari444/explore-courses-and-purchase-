@@ -1,0 +1,14 @@
+.description{
+ 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.cardlist{
+    transition: all 0.3s;
+}
+
+.cardlist:hover{
+    transform: scale(1.15);
+}
