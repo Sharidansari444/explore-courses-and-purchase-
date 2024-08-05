@@ -31,14 +31,15 @@ export const AuthProvider = ({ children }) => {
     await axios.get("http://localhost:5000/api/auth/user",
     {
       headers: {
-        Authorization: AuthorizationToken
+        Authorization: AuthorizationToken,
+        "Content-Type" : "application/json"
       }
     }
     ).then((res)=>{
-      // console.log(res)
+      console.log(res)
        if(res.statusText){
-         const data = res.data.userdata
-         console.log(data)
+         const data = res
+        //  console.log(data)
          setUser(data)
          setIsLoading(false)
        }
@@ -52,9 +53,7 @@ export const AuthProvider = ({ children }) => {
    const getdata = async ()=>{
     
       await axios.get("http://localhost:5000/api/data/cource",{
-        headers: {
-          Authorization: AuthorizationToken
-        }
+        
       }).then((res)=>{
 
         

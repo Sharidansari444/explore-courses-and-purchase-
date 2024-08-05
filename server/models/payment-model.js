@@ -1,11 +1,11 @@
 const mongoose  = require("mongoose")
 
 const paymentSchema = new mongoose.Schema({
-    razorpay_payment_id :{
+    razorpay_payment_id:{
         type:String,
         require:true
     },
-    razorpay_subscription_id :{
+    razorpay_order_id :{
         type:String,
         require:true
     },
@@ -13,11 +13,11 @@ const paymentSchema = new mongoose.Schema({
         type:String,
         require:true
     }
-
-
-
 },{
-    timestamps:true
+    date : {
+        type :Date,
+        default : Date.now
+    }
 })
 
 const Payment  = new mongoose.model("Payment",paymentSchema)

@@ -1,10 +1,23 @@
 import {  useLocation, useNavigate } from 'react-router-dom'
 import ravindra from '../Assets/Images/Rabindranath_Tagore.jpg'
+import { useAtuh } from '../../storecontext/auth'
 
 // import toast from 'react-hot-toast'
 const CourcesDescription = () => {
     const {state} = useLocation()
     const navigate = useNavigate()
+    const {user} = useAtuh()
+    const loginhanlder = (  )=>{
+       
+          if(user.status === 200 ){
+            navigate("/payments/Checkoutpage" ,  { state: { ...state } })
+          }else(
+            navigate("/login")
+          )
+
+    }
+
+
     //  const {AuthorizationToken } = useAtuh()
     //      // console.log(state)
 
@@ -80,7 +93,7 @@ const CourcesDescription = () => {
                     <div className='row'>
                         <h4 className='text-warning'>Price : <span className='text-primary'>{state.price}</span></h4>
                     </div>
-                     <button className='btn btn-warning'  onClick={() => navigate("/payments/Checkoutpage" ,  { state: { ...state } })}>  subscribe now</button>
+                     <button className='btn btn-warning'  onClick={() => loginhanlder()}>  subscribe now</button>
                  </div>
                  <div className='col-6 d-flex  flex-column'>
                     <h4 className='text-warning' >This is a gitcode</h4>

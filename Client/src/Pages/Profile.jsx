@@ -32,8 +32,7 @@ const Profile = () => {
               </div>
               <div className='d-flex justify-content-between'>
             <h5>Subscription :</h5>
-            <span className='text-warning'> {user?.subscription
-              ?.status === "created" ? " Active" : " Inactive"}</span>
+            <span className='text-warning'> {user?.razorpay_order_id?.status === "active" ? " Active" : " Inactive"}</span>
               </div>
              
           </div>

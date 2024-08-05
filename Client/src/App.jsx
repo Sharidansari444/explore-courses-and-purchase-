@@ -20,6 +20,7 @@ import Checkoutpage from './Pages/Checkoutpage';
 import ForgetPassword from './Pages/ForgetPassword';
 // import Resetpassword from './Pages/ResetPassword';
 import ResetPassword from './Pages/ResetPassword';
+import Success from './Pages/Success';
 
 
 
@@ -39,6 +40,7 @@ const App = () => {
           <Route path='/Profile' element={<Profile/>}></Route>
           <Route path='/cources/description' element={<CourcesDescription/>}></Route>
           <Route path='/payments/Checkoutpage' element={<Checkoutpage/>}></Route>
+          <Route path ='/success' element = {<Success/>}></Route>
           <Route path='/admin' element={<Adminlayout/>}>
              <Route path='Users' element={<AdminUser/>}> </Route>
              <Route path='Contacts' element={<Admincontact/>}> </Route>

@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const courceroute = require("../controllers/cource");
-const isLoggedIn = require("../middlewares/user-middleware");
 
-router.route("/cource").get(isLoggedIn,  courceroute)
+router.route("/cource").get(courceroute)
 
-module.exports= router
+module.exports = router

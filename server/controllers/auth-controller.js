@@ -100,7 +100,7 @@ const login = async (req,res)=>{
 const user = (req,res)=>{
     try {
         const userdata = req.user
-      return  res.status(200).json({userdata })
+      return  res.status(200).json( {userdata })
     } catch (error) {
         console.log("user verify error" )
     }

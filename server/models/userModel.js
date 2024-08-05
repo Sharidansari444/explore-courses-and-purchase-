@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
-    subscription:{
+    razorpay_order_id:{
         status:String,
         id:String,
     },

@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "browser": {
+    "crypto": false
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
