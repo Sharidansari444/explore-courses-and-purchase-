@@ -9,6 +9,7 @@ import { useAtuh } from '../../storecontext/auth'
 const AboutsUs = () => {
     
  const {user} = useAtuh()
+//  console.log(user.name)
   return (
     <HomeLayout >
       <div className=' container text-white'  >
@@ -16,7 +17,7 @@ const AboutsUs = () => {
         <div className='d-flex  gap-5 '   >
             
              <section className='w-50 space-y-10  '>
-                <h5> Welcome <span className='fs-2 text-warning fst-italic'>{user.name}</span>  </h5>
+                <h5> Welcome <span className='fs-2 text-warning fst-italic'>{user?.name}</span>  </h5>
                   <h1 className='text-warning  ' style={{marginTop:"10px"}}>
 
                     Affordable and quality breducation 

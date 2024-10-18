@@ -7,24 +7,13 @@ import { Link,  } from 'react-router-dom';
 import { useAtuh } from '../../storecontext/auth';
 const HomeLayout = ({ children }) => {
    const {isLoggedin} = useAtuh()
-  // const dispatch = useDispatch();
-
-  // const navigate = useNavigate();
-
-
-  // const isLoggedin = useSelector((state) => state?.auth?.isLoggedin);
-  // const role = useSelector((state) => state?.auth?.role);
-
-  // function handleLogout (e){
-  //   e.preventDefault();
-  //   navigate("/")
-  // }
-
+   const {user} = useAtuh()
+ 
   return (
-    <div className="navbar navbar-dark bg-dark fixed-top d-flex ">
+    <div className="navbar navbar-dark bg-dark fixed-top d-flex w-100 h-100 ">
       <div className="container-fluid">
 
-        <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"  >
+        <button className="navbar-toggler ms-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"  >
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="offcanvas offcanvas-end text-bg-dark" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
@@ -34,20 +23,26 @@ const HomeLayout = ({ children }) => {
               <li className="nav-item">
                 <Link className="text-light nav-link" to="/">Home</Link>
               </li>
-              {/* {!isLoggedin && role === 'ADMIN' && (
-                <li>
-                  <Link to="/admin/dashboard">Admin Dashboard</Link>
-                </li>
-              )} */}
+              
               <li className="nav-item">
-                <Link className="text-light nav-link " to="/abouts">Abouts us</Link>
+                <Link className="text-light nav-link inp " to="/abouts">Abouts us</Link>
               </li>
               <li className="nav-item">
                 <Link className="text-light nav-link" to="/Contact">contact us</Link>
               </li>
               <li className="nav-item"> 
-                <Link className="text-light nav-link" to="/Cources">All courses</Link>
+                <Link className="text-light nav-link" to="/Courses">All courses</Link>
               </li>
+              {user.isAdmin === true && (
+                <li className="nav-item"> 
+                <Link className="text-light nav-link" to="/admin">Admin Dashboard</Link>
+              </li>
+              )}
+                 {user.isAdmin === true && (
+                <li className="nav-item"> 
+                <Link className="text-light nav-link" to="/CourseCreate">Course Create</Link>
+              </li>
+              )}
               
             </ul>
             {isLoggedin ? (
@@ -82,7 +77,6 @@ const HomeLayout = ({ children }) => {
         </div>
       </div>
       {children}
-
     </div>
   )
 }

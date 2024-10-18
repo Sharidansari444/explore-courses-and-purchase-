@@ -1,11 +1,11 @@
 import React from 'react'
-import { FaRegUserCircle } from "react-icons/fa";
 import { useAtuh } from '../../storecontext/auth';
 
 
 const Profile = () => {
 
-  const { user } = useAtuh()
+  const { user} = useAtuh()
+  console.log(user)
   return (
 
     <div>
@@ -15,14 +15,16 @@ const Profile = () => {
           <div className=' card bg-dark text-light  h-50 container ' >
             <div  className=' w-100 h-auto  flex-column
              d-flex justify-content-center align-items-center'>
-
-            <FaRegUserCircle className='w-25 h-75   ' />
-             <h5 className='text-warning mt-3'> {user.name}</h5>
+              
+            {/* <FaRegUserCircle className='w-25 h-75   ' /> */}
+            <img className='w-25 rounded-circle h-auto  flex-column
+             d-flex justify-content-center align-items-center' src={user?.avatar?.secure_url} alt="" />
+             <h5 className='text-warning mt-3'> {user?.name}</h5>
             </div>
               <div className='d-flex justify-content-between mt-3'>
 
             <h5 className='mt-2 ' >Email :</h5>
-            <span className='text-warning'>{user.email}</span>
+            <span className='text-warning'>{user?.email}</span>
               </div>
               <div className='d-flex justify-content-between'>
 

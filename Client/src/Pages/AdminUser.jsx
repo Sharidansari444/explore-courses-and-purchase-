@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useAtuh } from '../../storecontext/auth'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 const AdminUser = () => {
 
   const { AuthorizationToken } = useAtuh()
   const [allUserData, setAllUserData] = useState([])
 
-  
+ 
 
   const getAllUsersData = () => {
     axios.get("http://localhost:5000/api/admin/User", {
@@ -20,22 +21,22 @@ const AdminUser = () => {
       setAllUserData(res.data.user)
 
     })
-  } 
+  }
 
-  const deleteUser = (id) =>{
-  console.log(id)
-  axios.delete(`http://localhost:5000/api/admin/User/Delete/${id}` , {
-    headers:{
-      Authorization: AuthorizationToken
-    }
-  }).then((res)=>{
-    console.log(res)
+  const deleteUser = (id) => {
+    console.log(id)
+    axios.delete(`http://localhost:5000/api/admin/User/Delete/${id}`, {
+      headers: {
+        Authorization: AuthorizationToken
+      }
+    }).then((res) => {
+      console.log(res)
 
-    // getAllUserData is again call after user delete
-    getAllUsersData();
-  }).catch((error)=>{
-    console.log(error)   
-  })
+      // getAllUserData is again call after user delete
+      getAllUsersData();
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   useEffect(() => {
@@ -66,14 +67,14 @@ const AdminUser = () => {
               </tr>
             </thead>
             <tbody>
-              { allUserData && allUserData.map((currUser, index) => {
+              {allUserData && allUserData.map((currUser, index) => {
                 return <tr key={index}>
                   <td>{currUser.name}</td>
                   <td>{currUser.email}</td>
-                  <td><Link to={`/admin/User/${currUser._id}/edit`}> Edit</Link></td>
-                  <td><button onClick={()=>deleteUser(currUser._id)}>
+                  <td><Link className='btn btn-outline-warning' to={`/admin/User/${currUser._id}/edit`}> Edit</Link></td>
+                  <td><button className='btn btn-outline-danger' onClick={() => deleteUser(currUser._id)}>
                     Delete
-                      </button></td>
+                  </button></td>
                 </tr>
               })}
             </tbody>

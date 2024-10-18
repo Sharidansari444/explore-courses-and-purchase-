@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [token, setToken] = useState(localStorage.getItem("token"))
   const [user, setUser] = useState("")
-  const [cource, setCource] = useState([])
+  // const [course, setCourse] = useState([])
   const AuthorizationToken = `Bearer ${token}`
 
   const storeTokenInLS = (serverToken) => {
@@ -36,56 +36,36 @@ export const AuthProvider = ({ children }) => {
       }
     }
     ).then((res)=>{
-      console.log(res)
+
        if(res.statusText){
          const data = res
-        //  console.log(data)
-         setUser(data)
+         console.log(data)
+        //  console.log(data.data.userdata)
+         setUser(data.data.userdata)
          setIsLoading(false)
        }
-      
+       
     }).catch((error)=>{
       console.log(error)
     })
     // console.log(response)
   }
  
-   const getdata = async ()=>{
-    
-      await axios.get("http://localhost:5000/api/data/cource",{
-        
-      }).then((res)=>{
+ 
 
-        
-          const data1 = res.data.message  
-          console.log(data1)
-          setCource(data1)
-          
-        
-      }).catch((error)=>{
-        console.log(`Frontend error ${error}`)
-      })
-      // console.log(response)
-   
-   }
-//  const bysubscription = async ()=>{
-//    await axios.get("http://localhost:5000/api/v1/razorpay-key",{headers:{
-//     Authorization:AuthorizationToken
-//    }}).then((res)=>[
-//     console.log(res)
-//    ])
-// }
   
 
+
   useEffect(() => {
-    getdata()
+   
     userauth()
+    
   }, [])
 
 // console.log(cource)
   return (
 
-    <AuthContext.Provider value={{ AuthorizationToken,storeTokenInLS,  LogoutUser, isLoggedin, user ,cource , isLoading}}>
+    <AuthContext.Provider value={{ AuthorizationToken , storeTokenInLS,  LogoutUser, isLoggedin, user , isLoading}}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express");
 var cors = require('cors')
+const cloudinary = require("cloudinary")
 
 const app = express();
 const authRouter = require("./router/auth-router")
@@ -9,7 +10,7 @@ const adminrouter = require("./router/admin-router")
 const paymentRoute = require("./router/payment-router")
 require("./utils/db")
 const errormiddleware = require("./middlewares/error-middleware");
-const  courcedata = require("./router/cources");
+const  coursedata = require("./router/courses");
 
 const corsOptions = {
     origin:"http://localhost:5173",
@@ -23,7 +24,7 @@ app.use(express.urlencoded({extended : true}))
 app.use("/api/auth", authRouter)
     
 app.use("/api/form", contactRouter)
-app.use("/api/data", courcedata)
+app.use("/api/course", coursedata)
 app.use("/api/v1" , paymentRoute)
 app.use(errormiddleware)
 
@@ -38,6 +39,14 @@ app.use("/api/admin", adminrouter )
 
 
 const PORT = 5000;
+
+
+cloudinary.v2.config({
+    cloud_name : process.env.CLOUDINARY_CLOUD_NAME,
+    api_key:process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
+
 
 app.listen(PORT, ()=>{
     console.log("server run on port 5000")

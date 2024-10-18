@@ -31,6 +31,18 @@ const userSchema = new mongoose.Schema({
     },
     verifytoken:{
         type:String
+    },
+    avatar :{
+       public_id:{
+       type: String,
+       require:true
+
+       },
+       secure_url :{
+        type: String,
+        require:true
+       }
+      
     }
 
 });

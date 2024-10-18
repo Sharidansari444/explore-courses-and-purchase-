@@ -5,7 +5,7 @@ import HomePages from './Pages/HomePages'
 
 import AboutsUs from "./pages/AboutsUS";
 import NotFound from './Pages/NotFound';
-import Cources from './Pages/Cources';
+import Courses from './Pages/Courses';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import Contact from './Pages/Contact';
@@ -21,6 +21,10 @@ import ForgetPassword from './Pages/ForgetPassword';
 // import Resetpassword from './Pages/ResetPassword';
 import ResetPassword from './Pages/ResetPassword';
 import Success from './Pages/Success';
+import CreateCourse from './Pages/CreateCourse';
+import Displaylecture from './Pages/Displaylecture';
+import Addlecture from './Pages/Addlecture';
+// import CourseUpdate from './Pages/CourseUpdate';
 
 
 
@@ -32,7 +36,9 @@ const App = () => {
           <Route path='/' element={<HomePages/>}></Route>
           <Route path='/abouts' element={<AboutsUs/>}></Route>
           <Route path='*' element={<NotFound/>}></Route>
-          <Route path='/Cources' element={<Cources/>}></Route>
+          <Route path='/Courses' element={<Courses/>}> 
+          </Route>
+          {/* <Route path='course/:id/update' element={<CourseUpdate/>}></Route> */}
           <Route path='/Signup' element={<Signup/>}></Route>
           <Route path='/Login' element={<Login/>}></Route>
           <Route path='/Logout' element={<Logout/>}></Route>
@@ -46,8 +52,12 @@ const App = () => {
              <Route path='Contacts' element={<Admincontact/>}> </Route>
              <Route path='User/:id/edit' element={<AdminUpdate/>}></Route>
           </Route>
+
+          <Route path='/CourseCreate' element={<CreateCourse/>}></Route>
           <Route path='/ForgetPassword' element={<ForgetPassword/>}></Route>
           <Route path='/ResetPassword/:id/:token' element={<ResetPassword/>}></Route>
+          <Route path='/Displaylecture' element={<Displaylecture/>}></Route>
+          <Route path='/Addlecture' element={<Addlecture/>}></Route>
           </Routes>   
         
     </div>
