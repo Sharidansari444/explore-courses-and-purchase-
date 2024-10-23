@@ -11,9 +11,10 @@ const paymentRoute = require("./router/payment-router")
 require("./utils/db")
 const errormiddleware = require("./middlewares/error-middleware");
 const  coursedata = require("./router/courses");
+const BASE_URL  = process.env.BASE_URL 
 
 const corsOptions = {
-    origin:"http://localhost:5173",
+    origin: `${BASE_URL}`,
     methods:" GET , PUT , POST , DELETE , UPDATE ,  HEAD , PATCH",
     credentials: true,
    
