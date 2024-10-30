@@ -44,7 +44,12 @@ const CourcesDescription = () => {
                     </div>
                     { user.isAdmin === true || user?.razorpay_order_id?.status === 'active' ? (
                        
-                       <button className='btn btn-warning'  onClick={() => navigate("/Displaylecture",{ state: { ...state } })}>  watch lecture</button> 
+                      <>
+                         <button className='btn btn-warning' onClick={() => navigate("/Displaylecture", { state: { ...state } })}>  watch lecture</button><button onClick={(() => navigate("/Addlecture", { state: { ...state } }))} className='btn ms-3 btn-outline-warning text-light '>
+                Add lecture
+              </button>
+                      </>
+                       
                     ) : (
                       <button className='btn btn-warning'  onClick={() => loginhanlder()}>  subscribe now</button> 
                     )

@@ -1,10 +1,13 @@
 import React from 'react'
 import { useAtuh } from '../../storecontext/auth';
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
 
   const { user} = useAtuh()
+  const navigate = useNavigate()
   console.log(user)
   return (
 
@@ -13,6 +16,10 @@ const Profile = () => {
 
         <div className='  w-100 h-100 d-flex justify-content-center align-items-center ' >
           <div className=' card bg-dark text-light  h-50 container ' >
+      <span className='text-warning fs-4' onClick={()=> navigate(-1)} >
+          
+          <FaArrowLeft/>
+        </span>
             <div  className=' w-100 h-auto  flex-column
              d-flex justify-content-center align-items-center'>
               
