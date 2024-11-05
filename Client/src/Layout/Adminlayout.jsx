@@ -4,7 +4,6 @@ import { FaUser } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { FaHome } from "react-icons/fa";
 import { useAtuh } from '../../storecontext/auth';
-import HomeLayout from '../Layout/HomeLayout'
 
 const Adminlayout = () => {
 
@@ -16,19 +15,19 @@ const Adminlayout = () => {
     }
 
 
-    console.log("adminLayout ", user)
+    console.log("adminLayout ", user)   
 
     if (!user.isAdmin) {
         return <Navigate to={"/"} />
     }
     return (
-        <HomeLayout>
-            <div className='h-100 w-100 bg-dark text-light'>
+        
+            <div className=' h-100 w-100 bg-dark overflow-y-scroll  text-light'>
 
-                <nav className="navbar container justify-content-between d-flex navbar-expand-lg w-100 ">
+                <nav className="navbar container d-flex navbar-expand-lg  ">
 
 
-                    <div className="d-flex align-items-center justify-content-end text-decoration-none">
+                    <div className="d-flex align-items-center   justify-content-end text-decoration-none ">
                         <ul className="navbar-nav w-auto gap-4">
                             <li  className='nav-item '>
 
@@ -47,7 +46,6 @@ const Adminlayout = () => {
                 </nav>
                 <Outlet />
             </div>
-        </HomeLayout>
     )
 }
 

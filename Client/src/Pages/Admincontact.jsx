@@ -50,7 +50,7 @@ const Admincontact = () => {
   }, [])
 
   return (
-    <div className='container'>
+    <div className='container h-100'>
       <h2 className='mt-5 fst-italic'>All contact data</h2>
       <div className=' d-flex flex-wrap  container'>
            {    contactdata.map((currvalue, index) => {

@@ -1,13 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { FaRegUserCircle } from 'react-icons/fa'
+import { AiFillPicture } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
 const CreateCourse = () => {
     const navigate = useNavigate()
-    const [image, setImage] = useState([null])
+    const [image, setImage] = useState(null)
     const [inputdata, setInputdata] = useState({
 
         title: "",
@@ -88,7 +88,7 @@ const CreateCourse = () => {
                                         
                                         <img className='w-100 h-50  ' src={image} alt="profile" />
                                     ) : (
-                                        <FaRegUserCircle className=' w-100 h-50 pointer-event   ' />
+                                        <AiFillPicture className=' w-100 h-50 pointer-event   ' />
 
                                     
                                     )
@@ -128,7 +128,7 @@ const CreateCourse = () => {
                                         name='createdBy'
                                         type="text "
                                          autoComplete='off'
-                                        placeholder='title' 
+                                        placeholder='course createdBy' 
                                         onChange={handleInputdata}
                                         />
 

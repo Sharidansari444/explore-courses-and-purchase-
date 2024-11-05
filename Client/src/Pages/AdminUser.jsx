@@ -49,14 +49,14 @@ const AdminUser = () => {
 
 
   return (
+    
+    <div className="container  ">
 
-    <div className="container">
-
-      <div className="d-flex mt-5 flex-column " >
+      <div className="d-flex mt-5 flex-column  " >
         <div>
           <h3>All user data</h3>
         </div>
-        <div className='mt-5 table-responsive'>
+        <div className='mt-5 table-responsive ' >
           <table className='table table-bordered table-striped table-hover '>
             <thead className=' table-dark'>
               <tr>
