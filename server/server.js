@@ -11,10 +11,10 @@ const paymentRoute = require("./router/payment-router")
 require("./utils/db")
 const errormiddleware = require("./middlewares/error-middleware");
 const  coursedata = require("./router/courses");
-const BASE_URL  = process.env.BASE_URL 
+// const BASE_URL  = process.env.BASE_URL 
 
 const corsOptions = {
-    origin: `${BASE_URL}`,
+    origin:['http://localhost:5173', 'https://672edd843fe0b6aa77bd1c32--remarkable-duckanoo-95cb29.netlify.app'],
     methods:" GET , PUT , POST , DELETE , UPDATE ,  HEAD , PATCH",
     credentials: true,
    
