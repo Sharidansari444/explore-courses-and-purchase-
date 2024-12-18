@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import HomeLayout from '../Layout/HomeLayout'
 import HomePagesImage from '../Assets/Images/projectimage (2).png'
+// import Footer from '../Components/Footer'
 const HomePages = () => {
     // const isLoggedin = useAtuh()
     return (
+      <div className='w-100 h-100'>
         <HomeLayout>
             <div className='pt-10 text-white d-flex  align-items-center  justify-content-center gap-10 mx-16'>
                 <div className=' space-y-6' style={{ width: "60%" }}>
@@ -35,7 +37,13 @@ const HomePages = () => {
                     {<img className='w-75 rounded-circle' src={HomePagesImage} alt=" Homepage image" style={{ height: "50vh", }} />}
                 </div>
             </div>
+            {/* <Footer/> */}
+        
         </HomeLayout>
+        <div className='bg-secondary posu text-light'>
+             <h4>hello</h4>
+        </div>
+        </div>
     )
 }
 

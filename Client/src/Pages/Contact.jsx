@@ -1,13 +1,16 @@
-import  {  useState } from 'react'
+import { useState } from 'react'
 import "./contact.css"
 import contact from '../Assets/Images/contact.png'
 import { useAtuh } from '../../storecontext/auth'
+import { BsFacebook, BsInstagram, BsLinkedin, } from 'react-icons/bs'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { Link, } from 'react-router-dom'
+import { FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   const [userData, setUserData] = useState(true)
-  const {user} = useAtuh()
+  const { user } = useAtuh()
   const [userinput, setUserinput] = useState({
     name: "",
     email: "",
@@ -17,11 +20,11 @@ const Contact = () => {
   // userData is true
   // user is true than output is true
 
-  if(userData && user){
+  if (userData && user) {
     setUserinput({
-      name : user.name,
+      name: user.name,
       email: user.email,
-      message:""
+      message: ""
     })
     setUserData(false)
   }
@@ -35,86 +38,106 @@ const Contact = () => {
       ...userinput,
       [name]: value
     })
-    
+
 
   }
 
-  const contactsubmit = async (e)=> {
+  const contactsubmit = async (e) => {
     e.preventDefault()
     // console.log(userinput)
 
-      
-   await axios.post("http://localhost:5000/api/form/contact",
-   userinput
-   ).then((res)=>{
 
-     
+    await axios.post("http://localhost:5000/api/form/contact",
+      userinput
+    ).then((res) => {
+
+
       toast.success("message send successfully")
       console.log(res)
       setUserinput({
-        message:""
+        message: ""
       })
-     
-   }).catch((error)=>{
-     console.log(error)
-     toast.error(error.response.data.extradetails? error.response.data.extradetails : error.response.data.message )
 
-   })
-      // console.log(contactuser)
+    }).catch((error) => {
+      console.log(error)
+      toast.error(error.response.data.extradetails ? error.response.data.extradetails : error.response.data.message)
 
-    
+    })
+    // console.log(contactuser)
+
+
   }
 
   return (
-    <div className='w-100 h-auto'>
-    <div className='main text-light d-flex bg-dark bg-gradient'>
-      <div className='contact-img  d-flex justify-content-center align-items-center ' style={{ height: "100vh" }}>
-        <img id='img' src={contact} alt="" />
-      </div>
-      <div className='form '>
-        <div className='' style={{ height: "100vh", width: "50vw" }}>
-          <form onSubmit={contactsubmit} className='input   d-flex justify-content-center align-items-center flex-column' action="" >
-            <h1 className='mb-3 text-warning '>Contact Form</h1>
-            
-            <input
-              className='form-control w-50'
-              type="text"
-              placeholder='Name..'
-              name='name'
-              value={userinput.name || ""}
-              onChange={sendhandler}
-               
-            />
+    <>
+      <div className='w-100 h-auto'>
+        <div className='main text-light d-flex bg-dark bg-gradient'>
 
-            <input
-              className='form-control w-50 mt-4'
-              type="email"
-              name='email'
-              placeholder='Enter your email..'
-              value={userinput.email || ""}
-              onChange={sendhandler}
-            />
+          <div className='contact-img  d-flex justify-content-center align-items-center ' style={{ height: "100vh" }}>
+            <img id='img' src={contact} alt="" />
+          </div>
+          <div className='form '>
+            <div className='' style={{ height: "100vh", width: "50vw" }}>
+              <form onSubmit={contactsubmit} className='input   d-flex justify-content-center align-items-center flex-column' action="" >
+                <h1 className='mb-3 text-warning '>Contact Form</h1>
 
-            <textarea
-              className="form-control w-50 h-25  mt-4 "
-              placeholder='Messgae...'
-              name='message'
-              value={userinput.message || ""}
-              onChange={sendhandler}
-              required={true}
-            ></textarea>
-            <button className='w-50 form-control  mt-3 fs-5 btn btn-outline-warning text-light '>
-              Send message
-            </button>
-          </form>
+                <input
+                  className='form-control w-50'
+                  type="text"
+                  placeholder='Name..'
+                  name='name'
+                  value={userinput.name || ""}
+                  onChange={sendhandler}
+
+                />
+
+                <input
+                  className='form-control w-50 mt-4'
+                  type="email"
+                  name='email'
+                  placeholder='Enter your email..'
+                  value={userinput.email || ""}
+                  onChange={sendhandler}
+                />
+
+                <textarea
+                  className="form-control w-50 h-25  mt-4 "
+                  placeholder='Messgae...'
+                  name='message'
+                  value={userinput.message || ""}
+                  onChange={sendhandler}
+                  required={true}
+                ></textarea>
+                <button className='w-50 form-control  mt-3 fs-5 btn btn-outline-warning text-light '>
+                  Send message
+                </button>
+                <div>
+                  <section className='d-flex mt-5 gap-5 fs-5 text-2xl'>
+                    <Link className='text-light' to="https://www.facebook.com/profile.php?id=100073965983223">
+                      <BsFacebook />
+                    </Link>
+                    <Link className='text-light' to="https://www.instagram.com/sharidansari4444/?next=%2F">
+
+                      <BsInstagram />
+                    </Link>
+                    <Link className='text-light' to="https://www.linkedin.com/in/sharidansari/">
+                      <BsLinkedin />
+                    </Link>
+                    <Link className='text-light' to="https://x.com/sharid_ansari">
+                      <FaXTwitter />
+                    </Link>
+                  </section>
+                </div>
+              </form>
+            </div>
+
+
+
+          </div>
         </div>
-        
-      
-      
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2429684312774!2d77.42944827517113!3d23.234243979025916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c435b24a0de2f%3A0xd090bc43b3357c8d!2sFrontech%20Service%20Center!5e0!3m2!1sen!2sin!4v1706868729014!5m2!1sen!2sin" style={{ width: "100%", height: "50vh", allowfullscreen: "", loading: "lazy", referrerpolicy: "no-referrer-when-downgrade" }} ></iframe>
       </div>
-    </div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.2429684312774!2d77.42944827517113!3d23.234243979025916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c435b24a0de2f%3A0xd090bc43b3357c8d!2sFrontech%20Service%20Center!5e0!3m2!1sen!2sin!4v1706868729014!5m2!1sen!2sin" style={{width:"100%",height:"50vh", allowfullscreen:"",loading:"lazy",referrerpolicy:"no-referrer-when-downgrade" }} ></iframe>
-    </div>
+    </>
   )
 }
 
